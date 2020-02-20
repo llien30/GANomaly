@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "train.py", line 43, in <module>
+    train_dataloader = load_data(CONFIG)["train"]
+  File "/media/ssd4t/mana/GANomaly/data.py", line 90, in load_data
+    i_ = transform(i)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 61, in __call__
+    img = t(img)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torchvision/transforms/transforms.py", line 198, in __call__
+    return F.resize(img, self.size, self.interpolation)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torchvision/transforms/functional.py", line 238, in resize
+    raise TypeError('img should be PIL Image. Got {}'.format(type(img)))
+TypeError: img should be PIL Image. Got <class 'torch.Tensor'>

@@ -1,0 +1,23 @@
+{
+    "root": "/media/ssd4t/mana/GANomaly",
+    "program": "train.py",
+    "startedAt": "2020-02-20T09:39:17.705218",
+    "host": "yuchi",
+    "username": "yuchi",
+    "executable": "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/bin/python",
+    "os": "Linux-4.15.0-76-generic-x86_64-with-debian-buster-sid",
+    "python": "3.6.8",
+    "gpu": "GeForce GTX 1060 6GB",
+    "gpu_count": 2,
+    "cpu_count": 12,
+    "cuda": "10.0.130",
+    "args": [
+        "./config/MNIST.yaml"
+    ],
+    "state": "failed",
+    "jobType": null,
+    "mode": "run",
+    "project": "GANomaly_mnist",
+    "heartbeatAt": "2020-02-20T09:39:19.105821",
+    "exitcode": 1
+}

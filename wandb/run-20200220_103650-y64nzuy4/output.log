@@ -1,0 +1,73 @@
+Device: cuda:0
+----------------------(train)----------------------
+Epoch 0/15
+---------------------------------------------------
+tensor([[[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]],
+
+        [[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]],
+
+        [[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]],
+
+        ...,
+
+        [[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]],
+
+        [[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]],
+
+        [[0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         ...,
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0],
+         [0, 0, 0,  ..., 0, 0, 0]]], dtype=torch.uint8)
+Traceback (most recent call last):
+  File "train.py", line 65, in <module>
+    no_wandb=args.no_wandb,
+  File "/media/ssd4t/mana/GANomaly/model.py", line 65, in train
+    train_fake_img, latent_input, latent_output = G(imges)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/module.py", line 547, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/media/ssd4t/mana/GANomaly/net.py", line 205, in forward
+    latent_i = self.encoder1(x)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/module.py", line 547, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/container.py", line 92, in forward
+    input = module(input)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/module.py", line 547, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 343, in forward
+    return self.conv2d_forward(input, self.weight)
+  File "/home/yuchi/.pyenv/versions/3.6.8/envs/mana/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 340, in conv2d_forward
+    self.padding, self.dilation, self.groups)
+RuntimeError: Expected 4-dimensional input for 4-dimensional weight 64 1 4, but got 3-dimensional input of size [64, 28, 28] instead

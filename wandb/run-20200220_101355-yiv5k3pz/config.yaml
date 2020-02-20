@@ -1,0 +1,57 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.8.27
+    framework: torch
+    is_jupyter_run: false
+    python_version: 3.6.8
+abnormal_class:
+  desc: null
+  value: 0
+batch_size:
+  desc: null
+  value: 64
+channel:
+  desc: null
+  value: 1
+dataset:
+  desc: null
+  value: MNIST
+extralayers:
+  desc: null
+  value: 0
+input_size:
+  desc: null
+  value: 32
+ndf:
+  desc: null
+  value: 64
+ngf:
+  desc: null
+  value: 64
+num_epochs:
+  desc: null
+  value: 15
+num_fakeimg:
+  desc: null
+  value: 10
+save_dir:
+  desc: null
+  value: ./weights
+test_batch_size:
+  desc: null
+  value: 64
+w_adv:
+  desc: null
+  value: 1
+w_con:
+  desc: null
+  value: 50
+w_enc:
+  desc: null
+  value: 1
+z_dim:
+  desc: null
+  value: 100

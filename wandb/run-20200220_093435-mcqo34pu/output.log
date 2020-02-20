@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "train.py", line 43, in <module>
+    train_dataloader = load_data(CONFIG)["train"]
+  File "/media/ssd4t/mana/GANomaly/data.py", line 97, in load_data
+    abn_cls=CONFIG.abn_cls,
+  File "/media/ssd4t/mana/GANomaly/data.py", line 29, in get_mnist_anomaly_dataset
+    nrm_train_cls = torch.from_numpy(np.where(trn_label.numpy() != abn_cls))
+TypeError: expected np.ndarray (got tuple)
