@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "train.py", line 43, in <module>
-    train_dataloader = load_data(CONFIG)["train"]
-  File "/media/ssd4t/mana/GANomaly/data.py", line 86, in load_data
-    print(train_dataset.target)
-AttributeError: 'MNIST' object has no attribute 'target'
