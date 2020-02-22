@@ -1,6 +1,7 @@
 # GANomaly
-[arXiv](https://arxiv.org/abs/1805.06725)
-[GitHub](https://github.com/samet-akcay/ganomaly)
+
+[arXiv](https://arxiv.org/abs/1805.06725)\
+[GitHub](https://github.com/samet-akcay/ganomaly)\
 [My Paper Summary](https://github.com/mn1204/paper_summary/issues/1)
 
 ## About CONFIG file
