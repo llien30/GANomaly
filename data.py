@@ -1,28 +1,8 @@
-import numpy as np
-import yaml
-from addict import Dict
-import argparse
-
 import torch
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
-
-def get_parameters():
-    """
-    make parser to get parameters
-    """
-
-    parser = argparse.ArgumentParser(description="take parameters like num_epochs...")
-
-    parser.add_argument("config", type=str, help="path of a config file for training")
-
-    return parser.parse_args()
-
-
-args = get_parameters()
-
-CONFIG = Dict(yaml.safe_load(open(args.config)))
+import numpy as np
 
 
 def get_mnist_anomaly_dataset(trn_img, trn_label, tst_img, tst_label, abn_cls):
@@ -76,7 +56,7 @@ def load_data(CONFIG):
     if CONFIG.dataset == "MNIST":
         transform = transforms.Compose(
             [
-                transforms.Resize(CONFIG.input_size),
+                transforms.Resize((CONFIG.input_size, CONFIG.input_size)),
                 transforms.ToTensor(),
                 transforms.Normalize((0.1307,), (0.3081,)),
             ]
@@ -85,7 +65,6 @@ def load_data(CONFIG):
         train_dataset = datasets.MNIST(
             root="./data", train=True, download=True, transform=transform
         )
-
         test_dataset = datasets.MNIST(
             root="./data", train=False, download=True, transform=transform
         )
@@ -105,7 +84,7 @@ def load_data(CONFIG):
 
         dataloader = {
             "train": DataLoader(
-                dataset=train_dataset.data, batch_size=CONFIG.batch_size, shuffle=True,
+                dataset=train_dataset, batch_size=CONFIG.batch_size, shuffle=True,
             ),
             "test": DataLoader(
                 dataset=test_dataset, batch_size=CONFIG.test_batch_size, shuffle=True,

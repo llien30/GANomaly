@@ -9,7 +9,7 @@ from net import NetD, NetG
 from data import load_data
 
 from libs.weights import weights_init
-from model import train
+from model import ganomaly
 
 import wandb
 
@@ -56,7 +56,7 @@ if not args.no_wandb:
     wandb.watch(D, log="all")
 
 
-G_update, D_update = train(
+G_update, D_update = ganomaly(
     G,
     D,
     z_dim=CONFIG.z_dim,

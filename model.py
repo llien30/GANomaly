@@ -13,7 +13,7 @@ import time
 import wandb
 
 
-def train(G, D, z_dim, dataloader, CONFIG, no_wandb):
+def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("Device:", device)
 
@@ -25,7 +25,6 @@ def train(G, D, z_dim, dataloader, CONFIG, no_wandb):
 
     # the default mini batch size
     mini_batch_size = 64
-    # fixed_img = torch.randn(CONFIG.num_fakeimg, 1, 64, 64).to(device)
 
     G.to(device)
     D.to(device)
@@ -47,10 +46,10 @@ def train(G, D, z_dim, dataloader, CONFIG, no_wandb):
         d_loss_meter = AverageMeter("D_loss", ":.4e")
         g_loss_meter = AverageMeter("G_loss", ":.4e")
 
-        for imges in dataloader:
-            print(imges.size())
-            imges.reshape(
-                CONFIG.batch_size, CONFIG.channel, CONFIG.input_size, CONFIG.input_size
+        for i, (imges, _) in enumerate(dataloader):
+            # print(imges.size())
+            imges = imges.reshape(
+                -1, CONFIG.channel, CONFIG.input_size, CONFIG.input_size
             )
             imges = imges.to(device)
             mini_batch_size = imges.size()[0]
