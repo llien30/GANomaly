@@ -47,7 +47,6 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
         g_loss_meter = AverageMeter("G_loss", ":.4e")
 
         for i, (imges, _) in enumerate(dataloader):
-            # print(imges.size())
             imges = imges.reshape(
                 -1, CONFIG.channel, CONFIG.input_size, CONFIG.input_size
             )
@@ -123,9 +122,6 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
                 },
                 step=epoch,
             )
-
-            # img = Image.open("fake_imges.png")
-            # wandb.log({"image": [wandb.Image(img)]}, step=epoch)
 
             t_epoch_start = time.time()
     return G, D

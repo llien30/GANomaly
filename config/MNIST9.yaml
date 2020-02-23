@@ -1,5 +1,5 @@
 dataset: 'MNIST'
-abnormal_class: 0
+abnormal_class: 9
 
 save_dir: './weights'
 
@@ -19,4 +19,4 @@ w_enc: 1
 
 num_epochs: 15
 
-name: 20200223-0
+name: 20200223-9
