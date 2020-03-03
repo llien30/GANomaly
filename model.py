@@ -1,19 +1,20 @@
 import torch
 import torch.nn as nn
 
-# from torchvision.utils import save_image
+from torchvision.utils import save_image
 
 from libs.loss import L2_Loss
 from libs.meter import AverageMeter
+from test import test
 
 import time
 
-# from PIL import Image
+from PIL import Image
 
 import wandb
 
 
-def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
+def ganomaly(G, D, z_dim, dataloader, test_dataloader, CONFIG, no_wandb):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("Device:", device)
 
@@ -38,6 +39,8 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
 
     for epoch in range(num_epochs):
         t_epoch_start = time.time()
+        G.train()
+        D.train()
 
         print("----------------------(train)----------------------")
         print("Epoch {}/{}".format(epoch, num_epochs))
@@ -102,6 +105,8 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
             d_loss.backward()
             d_optimizer.step()
 
+            save_image(train_fake_img, "fake_imges.png")
+
         t_epoch_finish = time.time()
         print("---------------------------------------------------")
         print(
@@ -110,6 +115,7 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
             )
         )
         print("timer:  {:.4f} sec.".format(t_epoch_finish - t_epoch_start))
+        Acc = test(CONFIG, epoch, G, test_dataloader, device)
         # fake_imges = G(fixed_img)
         # save_image(fake_imges, "fake_imges.png")
 
@@ -119,9 +125,13 @@ def ganomaly(G, D, z_dim, dataloader, CONFIG, no_wandb):
                     "train_time": t_epoch_finish - t_epoch_start,
                     "d_loss": d_loss_meter.avg,
                     "g_loss": g_loss_meter.avg,
+                    "Accuracy": Acc,
                 },
                 step=epoch,
             )
+
+            img = Image.open("fake_imges.png")
+            wandb.log({"image": [wandb.Image(img)]}, step=epoch)
 
             t_epoch_start = time.time()
     return G, D

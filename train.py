@@ -7,7 +7,6 @@ import argparse
 
 from net import NetD, NetG
 from data import load_data
-
 from libs.weights import weights_init
 from model import ganomaly
 
@@ -36,7 +35,7 @@ if not args.no_wandb:
     wandb.init(
         config=CONFIG,
         name=CONFIG.name,
-        project="GANomaly_mnist",  # have to change when you want to change project
+        project="GANomaly_cifar",  # have to change when you want to change project
         # jobtype="training",
     )
 
@@ -61,6 +60,7 @@ G_update, D_update = ganomaly(
     D,
     z_dim=CONFIG.z_dim,
     dataloader=train_dataloader,
+    test_dataloader=test_dataloader,
     CONFIG=CONFIG,
     no_wandb=args.no_wandb,
 )
@@ -68,13 +68,14 @@ G_update, D_update = ganomaly(
 if not os.path.exists(CONFIG.save_dir):
     os.makedirs(CONFIG.save_dir)
 
-torch.save = (
+torch.save(
     G_update.state_dict(),
-    os.path.join(CONFIG.save_dir, "G", CONFIG.name, ".prm"),
+    os.path.join(CONFIG.save_dir, "G-{}.prm".format(CONFIG.name)),
 )
-torch.save = (
+torch.save(
     D_update.state_dict(),
-    os.path.join(CONFIG.save_dir, "D", CONFIG.name, ".prm"),
+    os.path.join(CONFIG.save_dir, "D-{}.prm".format(CONFIG.name)),
 )
+
 
 print("Done")

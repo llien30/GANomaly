@@ -1,0 +1,22 @@
+dataset: 'CIFAR10'
+abnormal_class: 'horse'
+
+save_dir: './weights'
+
+batch_size: 64
+test_batch_size: 5
+
+channel: 3
+input_size: 32
+z_dim: 100
+ndf: 64
+ngf: 64
+extralayers: 0
+
+w_adv: 1
+w_con: 50
+w_enc: 1
+
+num_epochs: 15
+
+name: 20200303-horse
